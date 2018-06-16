@@ -1,0 +1,20 @@
+apply plugin: 'groovy'
+apply plugin: 'java-gradle-plugin'
+
+dependencies {
+    implementation localGroovy()
+    // What Java Gradle Plugin does:
+    // compile gradleApi()
+    compileOnly files("jars/gradle-api-4.8.jar")
+    // compileOnly files("jars/gradle-api-4.0.jar")
+    // compileOnly files("jars/gradle-public-api-4.8.jar")
+    // doesn't work
+    // compileOnly files("jars/gradle-public-api-4.9-initial.jar")
+    testImplementation('org.spockframework:spock-core:1.0-groovy-2.4') {
+        exclude module: 'groovy-all'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
